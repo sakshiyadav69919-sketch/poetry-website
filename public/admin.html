@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Poetry Admin</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            𝓟𝓸𝓮𝓽𝓻𝔂 𝓐𝓭𝓶𝓲𝓷
+        </div>
+
+        <nav>
+            <a href="index.html">View Website</a>
+        </nav>
+
+    </header>
+
+
+    <section class="admin-section">
+
+        <div class="admin-box">
+
+            <p class="eyebrow">
+                PRIVATE WRITING SPACE
+            </p>
+
+            <h1>
+                Add a new poem ✍️
+            </h1>
+
+            <input
+                type="text"
+                id="title"
+                placeholder="Poem title..."
+            >
+
+            <textarea
+                id="poem"
+                placeholder="Write your poem here..."
+            ></textarea>
+
+            <button onclick="publishPoem()">
+                Publish Poem ✦
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+    </section>
+
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
+

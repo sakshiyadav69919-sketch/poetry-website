@@ -1,0 +1,14 @@
+{
+  "name": "my-poetry-website",
+  "version": "1.0.0",
+  "description": "My public poetry website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0",
+    "dotenv": "^17.2.1"
+  }
+}
