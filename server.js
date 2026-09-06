@@ -139,3 +139,25 @@ app.listen(PORT, () => {
     );
 
 });
+// Delete a poem
+app.delete("/api/poems/:id", async (req, res) => {
+    try {
+        const deletedPoem = await Poem.findByIdAndDelete(req.params.id);
+
+        if (!deletedPoem) {
+            return res.status(404).json({
+                message: "Poem not found"
+            });
+        }
+
+        res.json({
+            success: true,
+            message: "Poem deleted successfully"
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            message: "Could not delete poem"
+        });
+    }
+});

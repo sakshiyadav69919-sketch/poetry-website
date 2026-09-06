@@ -505,5 +505,19 @@ footer {
     color: #c995ba;
 
     font-size: 18px;
+}.delete-btn {
+    margin-top: 20px;
+    padding: 8px 16px;
+    border: 1px solid #b85c5c;
+    background: transparent;
+    color: #b85c5c;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.3s;
 }
 
+.delete-btn:hover {
+    background: #b85c5c;
+    color: white;
+}
