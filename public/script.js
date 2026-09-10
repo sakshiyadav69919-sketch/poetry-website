@@ -1,5 +1,3 @@
-
-
 let allPoems = [];
 
 async function loadPoems() {
@@ -7,14 +5,25 @@ async function loadPoems() {
 
     try {
         const response = await fetch("/api/poems");
+
+        if (!response.ok) {
+            throw new Error("Failed to load poems");
+        }
+
         allPoems = await response.json();
 
+        console.log("POEMS:", allPoems);
+
         displayPoems(allPoems);
+
     } catch (error) {
-        console.error(error);
-        container.innerHTML = "<p>Poems load nahi ho pa rahi hain.</p>";
+        console.error("Error loading poems:", error);
+
+        container.innerHTML =
+            "<p>Poems load nahi ho pa rahi hain.</p>";
     }
 }
+
 
 function displayPoems(poems) {
     const container = document.getElementById("poemContainer");
@@ -22,11 +31,13 @@ function displayPoems(poems) {
     container.innerHTML = "";
 
     if (poems.length === 0) {
-        container.innerHTML = "<p>Koi poem nahi mili ✨</p>";
+        container.innerHTML =
+            "<p>Koi poem nahi mili ✨</p>";
         return;
     }
 
     poems.forEach((poem, index) => {
+
         const card = document.createElement("div");
 
         card.className = "poem-card";
@@ -47,19 +58,27 @@ function displayPoems(poems) {
 
 
 // 🔍 SEARCH
+
 const searchInput = document.getElementById("searchInput");
 
 if (searchInput) {
+
     searchInput.addEventListener("input", function () {
 
         const search = this.value.toLowerCase().trim();
 
         const filteredPoems = allPoems.filter(poem => {
 
-            const title = (poem.title || "").toLowerCase();
-            const text = (poem.text || "").toLowerCase();
+            const title =
+                (poem.title || "").toLowerCase();
 
-            return title.includes(search) || text.includes(search);
+            const text =
+                (poem.text || "").toLowerCase();
+
+            return (
+                title.includes(search) ||
+                text.includes(search)
+            );
         });
 
         displayPoems(filteredPoems);
@@ -67,8 +86,10 @@ if (searchInput) {
 }
 
 
-// Security helper
+// 🔐 Security helper
+
 function escapeHTML(text) {
+
     return String(text)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -77,5 +98,7 @@ function escapeHTML(text) {
         .replace(/'/g, "&#039;");
 }
 
+
+// 🚀 Load poems when page opens
 
 loadPoems();
